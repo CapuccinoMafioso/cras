@@ -147,10 +147,7 @@ background-color: #3498db;
 margin: 1rem auto 0;
 }
 
-.container {
-max-width: 1200px;
-margin: 0 auto;
-}
+
 
 /* Serviços */
 .services-grid {
@@ -579,14 +576,6 @@ color: rgba(255, 255, 255, 0.7);
 }
 }
 
-
-
-
-
-
-
-
-
 /* Modal Styles */
 .modal {
     display: none;
@@ -697,12 +686,6 @@ color: rgba(255, 255, 255, 0.7);
     }
 }
 
-
-
-
-
-
-
 .sobre-item {
     display: flex;
     align-items: flex-start;
@@ -732,4 +715,3 @@ color: rgba(255, 255, 255, 0.7);
         order: -1;
     }
 }
-
