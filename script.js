@@ -55,7 +55,7 @@ const modalContents = {
     paif: {
         title: "Serviço de Proteção e Atendimento Integral à Família (PAIF)",
         content: `
-            <img src="servico_familia.jpg" alt="Serviço de Proteção à Família">
+            <img src="FOTO LONGA DE FAMILIA.png" alt="Serviço de Proteção à Família">
             <p>O PAIF é o principal serviço oferecido pelo CRAS, destinado ao atendimento de famílias em situação de vulnerabilidade social.</p>
             <h4>Objetivos:</h4>
             <ul>
@@ -72,7 +72,7 @@ const modalContents = {
     criancas: {
         title: "Apoio às Crianças",
         content: `
-            <img src="servico_criancas.jpg" alt="Apoio às crianças">
+            <img src="imagem das crianças.jpg" alt="Apoio às crianças">
             <p>Atividades desenvolvidas para crianças em situação de vulnerabilidade social, visando o desenvolvimento integral e o fortalecimento de vínculos.</p>
             <h4>Atividades oferecidas:</h4>
             <ul>
@@ -89,7 +89,7 @@ const modalContents = {
     cadastro: {
         title: "Cadastro Único",
         content: `
-            <img src="/images/cadastro unico.png" alt="Cadastro Único">
+            <img src="cadastro unico.png" alt="Cadastro Único">
             <p>O Cadastro Único é o principal instrumento para identificação e caracterização socioeconômica das famílias brasileiras de baixa renda.</p>
             <h4>Para que serve:</h4>
             <ul>
@@ -110,7 +110,7 @@ const modalContents = {
     beneficios: {
         title: "Acesso a Benefícios Sociais",
         content: `
-            <img src="servico_beneficios.jpg" alt="Benefícios Sociais">
+            <img src="beneficios do gov.jpg" alt="Benefícios Sociais">
             <p>Orientação e encaminhamento para os principais programas e benefícios sociais do governo federal, estadual e municipal.</p>
             <h4>Principais benefícios:</h4>
             <ul>
