@@ -123,6 +123,17 @@ object-fit: cover;
 
 }
 
+.event-video {
+    width: 100%;
+    max-width: 800px; /* limita largura máxima se quiser */
+    height: 300px; /* altura menor pra não ficar comprido */
+    object-fit: cover; /* corta as bordas se estiver desproporcional */
+   
+    display: block;
+    margin: 0 auto 10px;
+}
+
+
 .hero-content {
 position: absolute;
 bottom: 0;

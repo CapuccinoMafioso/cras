@@ -1,4 +1,3 @@
-
 // Menu toggle para mobile
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -44,7 +43,6 @@ modal.innerHTML = `
         <div class="modal-body"></div>
         <div class="modal-footer">
             <button class="modal-btn modal-btn-close">Fechar</button>
-            <button class="modal-btn modal-btn-primary">Agendar Atendimento</button>
         </div>
     </div>
 `;
@@ -144,10 +142,6 @@ function closeModal() {
 // Event listeners for modal
 modal.querySelector('.modal-close').addEventListener('click', closeModal);
 modal.querySelector('.modal-btn-close').addEventListener('click', closeModal);
-modal.querySelector('.modal-btn-primary').addEventListener('click', () => {
-    closeModal();
-    window.location.href = '#contato';
-});
 
 // Close modal when clicking outside
 modal.addEventListener('click', (e) => {
