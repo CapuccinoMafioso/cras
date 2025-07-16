@@ -404,9 +404,10 @@ color: rgba(255, 255, 255, 0.7);
 }
 
 .team-image {
-height: 300px;
+height: 60%px;
 width: 100%;
 object-fit: cover;
+border-radius: 10px;
 }
 
 .team-info {
