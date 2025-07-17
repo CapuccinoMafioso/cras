@@ -5,13 +5,25 @@ const navLinks = document.querySelector('.nav-links');
 menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
+window.addEventListener('scroll', () => {
+  let current = "";
 
-// Fechar menu ao clicar em um link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
 });
+
 
 // Scroll suave para as seções
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -80,8 +92,8 @@ const modalContents = {
                 <li>Rodas de conversa sobre direitos da criança</li>
             </ul>
             <h4>Público-alvo:</h4>
-            <p>Crianças de 6 a 12 anos em situação de vulnerabilidade social.</p>
-            <p><strong>Horários:</strong> Terças e quintas, das 14h às 17h.</p>
+            <p>Crianças de 0 a 6 anos em situação de vulnerabilidade social.</p><p>Crianças de 7 a 15 anos em situação de vulnerabilidade social.</p><p>Crianças de 15 a 17 anos em situação de vulnerabilidade social.</p>
+            
         `
     },
     cadastro: {
@@ -94,7 +106,11 @@ const modalContents = {
                 <li>Acesso a programas sociais como Bolsa Família</li>
                 <li>Tarifa Social de Energia Elétrica</li>
                 <li>Isenção de taxas em concursos públicos</li>
+                <li>ID Jovem: Documento que garante acesso a benefícios culturais e de mobilidade para jovens de 15 a 29 anos.</li>
+                <li>BPC (Benefício de Prestação Continuada): Para idosos a partir de 65 anos e pessoas com deficiência.</li>
                 <li>Outros benefícios governamentais</li>
+
+                
             </ul>
             <h4>Documentos necessários:</h4>
             <ul>
@@ -102,25 +118,15 @@ const modalContents = {
                 <li>Comprovante de residência</li>
                 <li>Comprovante de renda (se houver)</li>
             </ul>
-            <p><strong>Atendimento:</strong> De segunda a sexta, das 8h às 12h e das 14h às 17h.</p>
+            
         `
     },
-    beneficios: {
-        title: "Acesso a Benefícios Sociais",
-        content: `
-            <img src="beneficios do gov.jpg" alt="Benefícios Sociais">
-            <p>Orientação e encaminhamento para os principais programas e benefícios sociais do governo federal, estadual e municipal.</p>
-            <h4>Principais benefícios:</h4>
-            <ul>
-                <li><strong>Bolsa Família:</strong> Transferência de renda para famílias em situação de pobreza e extrema pobreza.</li>
-                <li><strong>BPC (Benefício de Prestação Continuada):</strong> Para idosos a partir de 65 anos e pessoas com deficiência.</li>
-                <li><strong>Tarifa Social de Energia Elétrica:</strong> Desconto na conta de luz para famílias de baixa renda.</li>
-                <li><strong>ID Jovem:</strong> Documento que garante acesso a benefícios culturais e de mobilidade para jovens de 15 a 29 anos.</li>
-            </ul>
-            <p><strong>Requisitos:</strong> É necessário estar cadastrado no Cadastro Único.</p>
-        `
-    }
+   
 };
+
+  
+
+
 
 // Open modal function
 function openModal(service) {
@@ -158,3 +164,26 @@ document.querySelectorAll('.service-card .btn').forEach((btn, index) => {
         openModal(services[index]);
     });
 });
+
+
+
+  const favicon = document.getElementById("favicon");
+
+  function updateFaviconBasedOnTheme(e) {
+    if (e.matches) {
+      // Tema escuro
+      favicon.href = "logobranca.png"; // ícone branco
+    } else {
+      // Tema claro
+      favicon.href = "logo_do_cras_pequeno-removebg-preview.png"; // ícone escuro
+    }
+  }
+
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // Atualiza imediatamente ao carregar
+  updateFaviconBasedOnTheme(darkModeMediaQuery);
+
+  // Atualiza quando o usuário muda o tema
+  darkModeMediaQuery.addEventListener('change', updateFaviconBasedOnTheme);
+
