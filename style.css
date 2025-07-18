@@ -426,7 +426,7 @@ border-radius: 10px;
 
 .team-image {
     width: 100%;
-    height: 50%;
+    height: 45%;
     object-fit: cover;
     border-bottom: 4px solid #3498db;
 }
