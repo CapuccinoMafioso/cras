@@ -1,28 +1,49 @@
-// Menu hambúrguer melhorado
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-// Adiciona acessibilidade
-menuToggle.setAttribute('aria-label', 'Abrir menu');
-menuToggle.setAttribute('aria-expanded', 'false');
-
-menuToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('active');
+// Menu Hamburguer e Scroll Suave
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
     
-    // Atualiza atributos ARIA
-    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-});
-
-// Fecha o menu ao clicar em um link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Abrir menu');
+    // Configuração inicial de acessibilidade
+    menuToggle.setAttribute('aria-label', 'Abrir menu');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    
+    // Abrir/fechar menu
+    menuToggle.addEventListener('click', function() {
+        const isOpen = navLinks.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+        menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        
+        // Animação do ícone
+        this.querySelector('i').classList.toggle('fa-times');
+        this.querySelector('i').classList.toggle('fa-bars');
+    });
+    
+    // Fechar menu ao clicar em um item
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Scroll suave
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Fecha o menu mobile
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                
+                // Scroll suave com offset para a navbar
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 });
-
 // Modal functionality
 const modal = document.createElement('div');
 modal.className = 'modal';
