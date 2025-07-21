@@ -286,6 +286,7 @@ color: #2c3e50;
 
 .contact-item {
 display: flex;
+ font-size: 20px;
 align-items: flex-start;
 margin-bottom: 1rem;
 }
@@ -789,4 +790,11 @@ color: rgba(255, 255, 255, 0.7);
     .about-image {
         order: -1;
     }
+}
+
+
+
+.footer-logo img {
+  height: 60px;
+  object-fit: contain;
 }
