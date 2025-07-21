@@ -1,47 +1,27 @@
-// Menu toggle para mobile
+// Menu hambúrguer melhorado
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
+// Adiciona acessibilidade
+menuToggle.setAttribute('aria-label', 'Abrir menu');
+menuToggle.setAttribute('aria-expanded', 'false');
+
 menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-window.addEventListener('scroll', () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
+    const isOpen = navLinks.classList.toggle('active');
+    
+    // Atualiza atributos ARIA
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
 });
 
-
-// Scroll suave para as seções
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+// Fecha o menu ao clicar em um link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
     });
 });
-
 
 // Modal functionality
 const modal = document.createElement('div');
