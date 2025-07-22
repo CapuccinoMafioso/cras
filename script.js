@@ -180,11 +180,62 @@ document.querySelectorAll('.service-card .btn').forEach((btn, index) => {
     }
   }
 
-  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-  // Atualiza imediatamente ao carregar
-  updateFaviconBasedOnTheme(darkModeMediaQuery);
-
-  // Atualiza quando o usuário muda o tema
-  darkModeMediaQuery.addEventListener('change', updateFaviconBasedOnTheme);
-
+ document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona TODOS os carrosseis da página
+    const allCarousels = document.querySelectorAll('.event-carousel');
+    
+    allCarousels.forEach(carousel => {
+        const slides = carousel.querySelector('.carousel-slides');
+        const slideItems = carousel.querySelectorAll('.carousel-slide');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        
+        let currentIndex = 0;
+        let interval;
+        
+        function goToSlide(index) {
+            currentIndex = (index + slideItems.length) % slideItems.length;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Atualiza classe ativa (opcional para estilos)
+            slideItems.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+        
+        function startAutoPlay() {
+            interval = setInterval(nextSlide, 12000);
+        }
+        
+        function resetAutoPlay() {
+            clearInterval(interval);
+            startAutoPlay();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+        
+        // Pausa quando o mouse está sobre o card
+        carousel.addEventListener('mouseenter', () => clearInterval(interval));
+        carousel.addEventListener('mouseleave', startAutoPlay);
+        
+        // Inicia o auto-play
+        startAutoPlay();
+    });
+});
