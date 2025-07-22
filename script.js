@@ -167,18 +167,30 @@ document.querySelectorAll('.service-card .btn').forEach((btn, index) => {
 });
 
 
+// Obtém o elemento favicon - verifica se já existe ou cria um
+let favicon = document.querySelector("link[rel='icon']") || document.createElement('link');
+favicon.rel = 'icon';
+document.head.appendChild(favicon);
 
-  const favicon = document.getElementById("favicon");
-
-  function updateFaviconBasedOnTheme(e) {
-    if (e.matches) {
-      // Tema escuro
-      favicon.href = "logobranca.png"; // ícone branco
+// Função para atualizar o favicon baseado no tema
+function updateFaviconBasedOnTheme(e) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Tema escuro
+        favicon.href = "logobranca.png"; // ícone branco
     } else {
-      // Tema claro
-      favicon.href = "logo_do_cras_pequeno-removebg-preview.png"; // ícone escuro
+        // Tema claro
+        favicon.href = "logo_do_cras_pequeno-removebg-preview.png"; // ícone escuro
     }
-  }
+}
+
+// Verifica o tema inicial
+updateFaviconBasedOnTheme();
+
+// Configura o listener para mudanças de tema
+if (window.matchMedia) {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeMediaQuery.addListener(updateFaviconBasedOnTheme);
+}
 
  document.addEventListener('DOMContentLoaded', function() {
     // Seleciona TODOS os carrosseis da página
