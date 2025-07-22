@@ -93,7 +93,7 @@ const modalContents = {
                 <li>Rodas de conversa sobre direitos da criança</li>
             </ul>
             <h4>Público-alvo:</h4>
-            <p>Crianças de 0 a 6 anos em situação de vulnerabilidade social.</p><p>Crianças de 7 a 15 anos em situação de vulnerabilidade social.</p><p>Crianças de 15 a 17 anos em situação de vulnerabilidade social.</p>
+            <p>Crianças de 0 a 6 anos em situação de vulnerabilidade social.</p><p>Crianças de 7 a 15 anos em situação de vulnerabilidade social.</p><p>Adolescente de 15 a 17 anos em situação de vulnerabilidade social.</p><p>Adulto e idosos de 18 a maiores de 60 anos em situação de vulnerabilidade social.</p>
             
         `
     },
